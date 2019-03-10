@@ -1,0 +1,16 @@
+<p class="help-block">Provincia</p>
+<select class="form-control" name="provincia" ng-model="provincia" ng-options="p as p.name for p in provincias track by p.cod" ng-change="updateCantones()" ng-required="required">
+	<option value="" disabled>-Seleccionar provincia-</option>
+</select>
+
+<p class="help-block">Cantón</p>
+<select class="form-control" name="canton" ng-model="canton" ng-options="c as c.name for c in cantones track by c.cod" ng-change="updateDistritos()" ng-disabled="hasCantones()" ng-required="required">
+	<option value="" disabled>-Seleccionar cantón-</option>
+</select>
+
+<p class="help-block">Distrito</p>
+<select class="form-control" name="distrito" ng-model="distrito" ng-options="d as d.name for d in distritos track by d.cod" ng-change="updateDistrito()" ng-disabled="hasDistritos()" ng-required="required">
+	<option value="" disabled>-Seleccionar distrito-</option>
+</select>
+
+<input type="hidden" name="{{ field }}" ng-value="ngModel">
