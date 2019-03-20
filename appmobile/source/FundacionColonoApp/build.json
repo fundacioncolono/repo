@@ -1,0 +1,11 @@
+{
+     "android": {
+         "release": {
+             "keystore": "FundacionColonoAppKey",
+             "storePassword": "FundacionColono18",
+             "alias": "FundaconColonoAppKey",
+             "password" : "FundacionColono18",
+             "keystoreType": ""
+         }
+     }
+ }

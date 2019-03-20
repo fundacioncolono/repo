@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: * gap: ms-appdata: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; media-src *">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <title>FundacionColonoApp</title>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.mobile-1.4.5.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../Content/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/jquery.mobile.external-png-1.4.5.min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/jquery.mobile.icons-1.4.5.min.css">
+
+    <link rel="stylesheet" type="text/css" href="css/classic.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+</head>
+<body>
+
+    <input type="hidden" name="_token" content="{{ Session::token() }}" id="token" />
+
+    <!-- Revisar visitas -->
+    <div data-role="page" id="pageCasosAprobados">
+
+        <div class="contenedorTitulo">
+            <a class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext" onclick="abrirCerrarMenu()"></a>
+            <h1 class="tituloPantalla">CasosAprobados</h1>
+        </div>
+
+        <div class="contenedorMenu"></div>
+
+        <div class="contenedorBody" id="menuPrincipalCasosAprb">
+
+            <label for="search-2">Buscar:</label>
+            <input type="search" id="txtBuscadorCasosAprb" stlye="width: calc(100% - 140px);" onkeyup="">
+
+            <div class="divTablas">
+                <table data-role="table" style="margin-top: 0px" id="tablaCasosAprb" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive tabla-app" data-column-btn-theme="b" data-column-btn-text="Ver columnas" data-column-popup-theme="a">
+                    <thead>
+                        <tr class="ui-bar-d">
+                            <th data-priority="1" class="ui-table-priority-1 ui-table-cell-hidden">Observaci&oacute;n</th>
+                            <th data-priority="2" class="ui-table-priority-2 ui-table-cell-hidden">C&eacute;dula</th>
+                            <th data-priority="3" class="ui-table-priority-3 ui-table-cell-hidden">Nombre</th>
+                            <th data-priority="4" class="ui-table-priority-4 ui-table-cell-hidden">Ubicaci&oacute;n</th>
+                            <th data-priority="4" class="ui-table-priority-4 ui-table-cell-hidden">Direcci&oacute;n</th>
+                            <th data-priority="5" class="ui-table-priority-5 ui-table-cell-hidden">Tel&eacute;fonos</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="contenedorFooter">
+            <h1 id="tituloFooter">Fundaci&oacute;n Colono &copy; 2018</h1>
+        </div>
+
+    </div>
+
+    <!-- Editar Visitas -->
+    <div data-role="page" id="pageObservarCasosAprb">
+
+        <div class="contenedorTitulo">
+            <a class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext" onclick="abrirCerrarMenu()"></a>
+            <h1 class="tituloPantalla">Observaciones Caso</h1>
+        </div>
+
+        <div class="contenedorMenu"></div>
+
+        <div class="contenedorBody" id="menuPrincipalEditarVisitas">
+            <form>
+                <div data-role="tabs" id="tabs">
+                    <div id="contenedorDatosVisitas">
+
+                        <label for="text-basic">Nombre:</label>
+                        <input class="campo-texto" type="text" name="text-basic" id="txtVisitasNombre" readonly value="">
+
+                        <label for="text-basic">Apellidos:</label>
+                        <input class="campo-texto" type="text" name="text-basic" id="txtVisitasApellidos" readonly value="">
+
+                        <label for="txtContrasenaPerfil">Cedula:</label>
+                        <input class="campo-texto" type="text" name="text-basic" id="txtVisitasCedula" readonly value="">
+
+                        <label for="text-basic">Direccion:</label>
+                        <textarea name="txtVisitasDireccion" id="txtVisitasDireccion" style="resize: none; height:100px !important;" readonly></textarea>
+
+                        <label for="txtContrasenaPerfil">Telefono:</label>
+                        <input class="campo-texto" type="text" name="text-basic" id="txtVisitastelefono" readonly value="">
+
+                        <label for="txtObservacionVisita">Observaciones: </label>
+                        <textarea name="txtObservacionVisita" id="txtObservacionVisita" style="resize: none; height:100px !important; "></textarea>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="contenedorFooter">
+            <h1 id="tituloFooter">Fundaci&oacute;n Colono &copy; 2018</h1>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+    <script type="text/javascript" src="scripts/general.js"></script>
+    <script type="text/javascript" src="scripts/casosAprobados.js"></script>
+
+</body>
+</html>

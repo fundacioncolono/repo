@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: * gap: ms-appdata: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; media-src *">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <title>FundacionColonoApp</title>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.mobile-1.4.5.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../Content/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/jquery.mobile.external-png-1.4.5.min.css">
+    <link rel="stylesheet" type="text/css" href="../Content/jquery.mobile.icons-1.4.5.min.css">
+
+    <link rel="stylesheet" type="text/css" href="css/classic.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+</head>
+<body>
+
+    <input type="hidden" name="_token" content="{{ Session::token() }}" id="token" />
+
+    <!-- Inicio page -->
+    <div data-role="page" id="pageInicio">
+
+        <div class="contenedorTitulo">
+            <a class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext" onclick="abrirCerrarMenu()"></a>
+            <h1 class="tituloPantalla">Inicio</h1>
+        </div>
+
+        <div class="contenedorMenu"></div>
+
+        <div class="contenedorBody" id="menuPrincipal"></div>
+
+        <div class="contenedorFooter">
+            <h1 id="tituloFooter">Fundaci&oacute;n Colono &copy; 2018</h1>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="scripts/index.js"></script>
+    <script type="text/javascript" src="scripts/general.js"></script>
+
+</body>
+</html>
