@@ -12,6 +12,16 @@ class UsuariosController extends Controller{
     
     const MAX_RECORDS = 16;
 
+    public function comprobar(Request $request)
+    {
+        
+        $usuario = Usuario::where('username', $request['username'] )->first();
+        return response()->json([
+          'resultado' => $usuario !== null,
+        ]);
+
+    }
+
     public function index()
     {
         
@@ -25,6 +35,7 @@ class UsuariosController extends Controller{
         ]);
 
     }
+
     public function verUsuarios()
     {
         return view('templates.usuarios.index');

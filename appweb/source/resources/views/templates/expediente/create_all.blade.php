@@ -20,8 +20,10 @@
 				</div>
 			</div>
 
-			<form name="newexpediente" class="form-horizontal" action="{{ route('expedientes.store') }}" method="POST">
-
+			<form name="account" class="form-horizontal" action="{{ route('expedientes.store') }}" method="post" autocomplete="off" novalidate>
+		
+		<!--	<form name="newexpediente" class="form-horizontal" action="{{ route('expedientes.store') }}" method="POST">
+		-->
 				{{ csrf_field() }}
 				
 				{{-- PERSONA --}}
@@ -29,28 +31,7 @@
 					<legend>Detalles de la persona</legend>
 					
 					{{-- PERSONA COMPONENT --}}
-					@component('components.forms.persona')
-						@slot('cedula_help')
-							<p class="help-block">
-								<small>Reemplace las equis (x) por los números de la cédula correspondiente.</small>
-							</p>
-							<p class="help-block" ng-show="invalid">
-								<span class="text-danger">Esta cédula no es válida. Por favor, ingrese otra cédula.</span>
-							</p>
-						@endslot
-
-						@slot('cedula_options')
-							ng-model="cedula"
-							ng-change="validate()"
-						@endslot
-
-						@slot('ubicacion_options')
-							ng-model="ubicacion"
-							field="ubicacion"
-							required
-						@endslot
-					@endcomponent
-
+					@include('templates.persona.$create')
 				</fieldset>
 
 				<div class="col-md-1 hidden-xs hidden-sm"></div>
@@ -58,7 +39,7 @@
 				{{-- EXPEDIENTE --}}
 				<fieldset class="col-md-5">
 					<legend>Detalles del caso</legend>
-					{{-- IMPORT FORM COMPONENT FOR PERSONA --}}
+					{{-- IMPORT FORM COMPONENT FOR CASO --}}
 					@include('templates.expediente.$create')
 				</fieldset>
 
@@ -74,7 +55,7 @@
 					@include('templates.ayuda.preview_pivot')
 
 					<div class="form-group text-center">
-						<button type="submit" class="btn btn-primary" ng-disabled="newexpediente.$invalid">Guardar expediente</button>
+						<button type="submit" class="btn btn-primary" ng-disabled="account.$invalid" ng-blur="account.$setUntouched()">Guardar expediente</button>
 					</div>
 				</fieldset>
 			</form>

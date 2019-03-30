@@ -129,5 +129,15 @@ app.controller('Inspectores_IndexController', function($scope, Inspector, Visita
       $scope.index($scope.page);
 	};
 
+	$scope.filter_desactivado = function () {
+	  	$scope.search               = '',
+      	$scope.filter_data.one      = false;
+		$scope.filter_data.active   = false; 
+		$scope.filter_data.filter   = null;
+		$scope.filter_data.filtered = false; 
+	    $scope.index();
+	};
+
+
 	$scope.index();
 });

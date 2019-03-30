@@ -20,7 +20,14 @@ app.controller('Expedientes_MainController', function ($scope, Referente, Ayuda,
         }
     };
 
-    $scope.ayudas = Ayuda.all();
+    //$scope.ayudas = Ayuda.all();
+
+    Ayuda.get(
+        function (response) {
+            $scope.ayudas = response.ayudas;
+        }
+    );
+    
     $scope.referentes = Referente.all();
 
     $scope.estados = [

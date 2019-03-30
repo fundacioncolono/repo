@@ -22,6 +22,7 @@ class VisitasController extends Controller
 
         $expedientes = Expediente::with( ['persona'] )
         ->whereNotIn('id', $arrayExpediente)
+        ->where('estado', 3)
         ->orderBy( 'persona_fk' , 'asc' )
         ->paginate(self::MAX_RECORDS);
 

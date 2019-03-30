@@ -9,9 +9,13 @@
                     Asignar expediente
                 </button>
             </h3>
+            <div class="alert alert-info" ng-show="selected.visitas.length == 0">
+                <strong>No hay expedientes asignados a este inspector</strong>
+            </div>
         </header>
+
         <!-- TABLA DE visitas -->
-        <div class="table-responsive col-md-12" style='overflow-x: hidden;overflow-y: auto'>
+        <div class="table-responsive col-md-12" style='overflow-x: hidden;overflow-y: auto;' ng-show="selected.visitas.length != 0">
             <table id="visitasIndex" class="table table-hover table-striped">
                 <thead>
                     <tr>

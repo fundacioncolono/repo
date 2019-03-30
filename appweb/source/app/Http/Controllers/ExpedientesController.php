@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Expediente;
 use App\Models\Persona;
 use App\Models\Referente;
+use App\Models\Visita;
 
 use App\Services\AyudaExpedienteService;
 use App\Services\ReferentesService;
@@ -227,6 +228,8 @@ class ExpedientesController extends Controller{
 	}
 
 	public function destroy($id){
+		$visita = Visita::where('expediente_fk',$id)->first();
+		$visita->delete();
 		$status = Expediente::destroy($id) === 1;
 
 		return response()->json([

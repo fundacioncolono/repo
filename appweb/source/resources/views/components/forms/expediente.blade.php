@@ -3,7 +3,11 @@
 <div class="form-group">
 	<label class="col-sm-2" for="descripcion">Descripcion:</label>
 	<div class="col-sm-12">
-		<textarea name="descripcion" class="noresize form-control" rows="5" cols="50" placeholder="Anote en detalle la descripción del caso" {{  isset($descripcion_options) ? $descripcion_options : ''  }} required></textarea>
+		<textarea name="descripcion" class="noresize form-control" rows="5" cols="50" placeholder="Anote en detalle la descripción del caso" {{  isset($descripcion_options) ? $descripcion_options : ''  }} required letras-numeros></textarea>
+
+		<span  ng-show="account.descripcion.$error.required && account.descripcion.$touched" class="help-block" style="color: #E00808;"><strong>Este campo es requerido</strong></span>
+
+         <span  ng-show="!account.descripcion.$error.required && account.descripcion.$error.letrasNumeros && account.descripcion.$touched" class="help-block" style="color: #E00808;"><strong>Sólo letras, números y signos (puntos, comas y espacios)</strong></span>
 	</div>
 </div>
 
@@ -44,6 +48,8 @@
 		<select class="form-control" name="prioridad" {{ isset($prioridad_options) ? $prioridad_options : '' }} convert-to-number required>
 			<option value="" disabled selected>-Seleccionar prioridad-</option>
 		</select>
+
+		<span  ng-show="account.prioridad.$error.required && account.prioridad.$touched" class="help-block" style="color: #E00808;"><strong>Este campo es requerido</strong></span>
 	</div>
 </div>
 
@@ -52,6 +58,8 @@
 	<label class="text-right col-sm-4" for="estado" required>Estado de aprobación:</label>
 	<div class="col-sm-8">
 		<select class="form-control" name="estado" {{ isset($estado_options) ? $estado_options : '' }} convert-to-number required></select>
+		
+		<span  ng-show="account.estado.$error.required && account.estado.$touched" class="help-block" style="color: #E00808;"><strong>Este campo es requerido</strong></span>
 	</div>
 </div>
 

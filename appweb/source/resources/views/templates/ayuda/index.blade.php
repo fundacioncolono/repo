@@ -42,39 +42,50 @@
 				<ul uib-pagination total-items="total" class="pagination-sm" ng-model="page" items-per-page="16" ng-change="index(page)"></ul>
 			</div>
 
-			  <!-- Modal agregar -->
-			<div class="modal fade" id="modalOpcion" role="dialog" style="margin-top: 10%;" ng-model='modalOpciones'>
-			    <div class="modal-dialog modal-md">
-			      	<div class="modal-content">
+			
+			<!-- Modal agregar -->
+			<form name="modalAyudas" novalidate>
+				<div class="modal fade" id="modalOpcion" role="dialog" style="margin-top: 10%;" ng-model='modalOpciones'>
+				    <div class="modal-dialog modal-md">
+				      	<div class="modal-content">
 
-			        	<div class="modal-header" style="background-color: @{{ opcion == 0 ? '#5cb85c' : opcion == 1 ? '#337ab7' : '#c9302c'}}; color: white;text-align: center;color: white;">
-			          		<button type="button" class="close" ng-click="closeModal()">&times;</button>
-			          		<h4 class="modal-title">
-			          			@{{ opcion === 0 ? 'Agregar' : opcion === 1 ? 'Editar' : 'Eliminar' }} ayuda</h4>
-			        	</div>
-			        	
-			        	<div class="modal-body" style="height: 100px;">
-			        		
-			        		<h4 style="display:@{{ opcion === 2 ? 'block' : 'none' }}; margin-top: 20px;text-align:center;">¿Deseas eliminar la ayuda @{{ selected.descripcion }}?</h4>
-							
-							<div class="form-group" style="display:@{{ opcion !== 2 ? 'block' : 'none' }};position: relative;top:35%;left:7%;">
-							    <label class="col-sm-3 col-form-label" style="margin-top: 5px;" for="descripcion">Descripción:</label>
-							    <div class="col-sm-7">
-							        <input type="text" class="form-control" id="descripcion" placeholder="Ingrese la descripción" ng-model="update.descripcion" required />
-							    </div>
-							</div>
-			        	
-			        	</div>
-			        	<div class="modal-footer">
-			          		<button type="button" class="btn-outline btn-default" ng-click="closeModal()" style="height: 30px;border-radius: 5px;">Cancelar</button>
-			        		<button type="button" class="btn-outline btn-@{{ opcion == 0 ? 'show' : opcion == 1 ? 'edit' : 'delete'}}" 
-			        			ng-click=" opcion === 0 ? add() : opcion === 1 ? edit() : delete()" style="height: 30px;border-radius: 5px;">
-			        			@{{ opcion === 0 ? 'Agregar' : opcion === 1 ? 'Guardar cambios' : 'Aceptar' }}
-			        		</button>
-			        	</div>
-			      	</div>
-			    </div>
-			</div>
+				        	<div class="modal-header" style="background-color: @{{ opcion == 0 ? '#5cb85c' : opcion == 1 ? '#337ab7' : '#c9302c'}}; color: white;text-align: center;color: white;">
+				          		<button type="button" class="close" ng-click="closeModal()">&times;</button>
+				          		<h4 class="modal-title">
+				          			@{{ opcion === 0 ? 'Agregar' : opcion === 1 ? 'Editar' : 'Eliminar' }} ayuda</h4>
+				        	</div>
+				        	
+				        	<div class="modal-body" style="height:@{{ opcion !== 2 ? '180px' : '100px' }}">
+				        		
+				        		<h4 style="display:@{{ opcion === 2 ? 'block' : 'none' }}; margin-top: 20px;text-align:center;">¿Deseas eliminar la ayuda @{{ selected.descripcion }}?</h4>
+								
+								<div class="form-group" style="display:@{{ opcion !== 2 ? 'block' : 'none' }};position: relative;top:35%;left:7%;">
+								    
+								    <label class="col-sm-3 col-form-label" style="margin-top: 5px;" for="descripcion">Descripción:</label>
+								    
+								    <div class="col-sm-7">
+								    
+								    	<input type="text" class="form-control" name="descripcion" placeholder="Ingrese la descripción" ng-model="update.descripcion" letras-numeros required>
+
+										<span  ng-show="modalAyudas.descripcion.$error.required && modalAyudas.descripcion.$touched" class="help-block" style="color: #E00808;"><strong>Este campo es requerido</strong>
+										</span>
+										<span  ng-show="!modalAyudas.descripcion.$error.required && modalAyudas.descripcion.$error.letrasNumeros && modalAyudas.descripcion.$touched" class="help-block" style="color: #E00808;"><strong>Sólo letras, números y signos (puntos, comas y espacios)</strong>
+										</span>
+
+									</div>
+								</div>	
+				        	</div>
+				        	<div class="modal-footer">
+				          		<button type="button" class="btn-outline btn-default" ng-click="closeModal()" style="height: 30px;border-radius: 5px;" ng-blur="modalAyudas.$setUntouched();">Cancelar</button>
+				        		<button ng-disabled="modalAyudas.$invalid" type="button" class="btn-outline btn-@{{ opcion == 0 ? 'show' : opcion == 1 ? 'edit' : 'delete'}}"
+				        			ng-click=" opcion === 0 ? add() : opcion === 1 ? edit() : delete()" style="height: 30px;border-radius: 5px;" ng-blur="modalAyudas.$setUntouched();">
+				        			@{{ opcion === 0 ? 'Agregar' : opcion === 1 ? 'Guardar cambios' : 'Aceptar' }}
+				        		</button>
+				        	</div>
+				      	</div>
+				    </div>
+				</div>
+			</form>
 
 		</section>
 	</ng-controller>

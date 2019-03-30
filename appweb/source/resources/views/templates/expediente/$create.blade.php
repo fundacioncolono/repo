@@ -1,5 +1,8 @@
-
 @component('components.forms.expediente')
+
+@slot('descripcion_options')
+    ng-model="caso.descripcion"
+@endslot
 	
 {{-- ------------------------- REFERENTE CONFIG ------------------------- --}}
 {{-- -------------------------------------------------------------------- --}}

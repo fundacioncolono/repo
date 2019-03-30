@@ -29,8 +29,8 @@
                 <li class="{{ \Request::is('inspectores*')? 'active' : '' }} dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Inspectores<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ route('inspectores.index') }}">Ver los expedientes</a></li>
-                        <li><a href="{{ route('inspectores.create') }}">Crear un nuevo caso</a></li>
+                        <li><a href="{{ route('inspectores.index') }}">Ver los inspectores</a></li>
+                        <li><a href="{{ route('inspectores.create') }}">Crear un nuevo inspector</a></li>
                     </ul>
                 </li>
                 <li class="{{ \Request::is('ayudas*') || \Request::is('usuarios*') ? 'active' : '' }} dropdown">

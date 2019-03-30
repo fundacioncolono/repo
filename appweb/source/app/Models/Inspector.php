@@ -10,6 +10,10 @@ class Inspector extends Model{
     //use SoftDeletes;    
     //const DELETED_AT = 'fecha_eliminacion';
 
+    protected $fillable = [
+        'username_fk', 'persona_fk', 'activo',
+    ];
+
     public $timestamps = false;
     protected $table = 'inspectores';
 

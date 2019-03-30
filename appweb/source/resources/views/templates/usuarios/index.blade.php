@@ -12,7 +12,7 @@
 			<!-- TABLA DE inspectores -->
 			<div class="table-responsive col-sm-8" style="margin-left: 15%">
 				<h3 class="text-center">
-					Ayudas 
+					Usuarios 
 					<button type="button" class="btn btn-success pull-right" ng-click="show(null, 0);">Agregar</button>
 				</h3>
 				<table id="index" class="table table-hover table-striped">
@@ -46,58 +46,96 @@
 				<ul uib-pagination total-items="total" class="pagination-sm" ng-model="page" items-per-page="16" ng-change="index(page)"></ul>
 			</div>
 
-			  <!-- Modal agregar -->
-			<div class="modal fade" id="modalOpcion" role="dialog" style="margin-top: 10%;" ng-model='modalOpciones'>
-			    <div class="modal-dialog modal-md">
-			      	<div class="modal-content">
-			        	
-			        	<div class="modal-header" style="background-color: @{{ opcion == 0 ? '#5cb85c' : opcion == 1 ? '#337ab7' : '#c9302c'}};text-align: center;color: white;">
-			          		<button type="button" class="close" ng-click="closeModal()">&times;</button>
-			          		<h4 class="modal-title" >
-			          			@{{ opcion === 0 ? 'Agregar' : opcion === 1 ? 'Editar' : 'Eliminar' }} usuario</h4>
-			        	</div>
-			        	
-			        	<div class="modal-body" style="height: @{{ opcion === 0 ? '220px' : opcion === 1 ? '150px' : '100px' }}">
-			        		
-			        		<h4 style="display:@{{ opcion === 2 ? 'block' : 'none' }}; margin-top: 20px;text-align: center;">¿Desea eliminar el usuario @{{ selected.username }}?</h4>
-							
-							<div style="display:@{{ opcion !== 2 ? 'block' : 'none' }}; margin-top: 20px;">	
+			<!-- Modal agregar -->
+			<form name="modalUsuarios" novalidate>
+				
+				<div class="modal fade" id="modalOpcion" role="dialog" style="margin-top: 10%;" ng-model='modalOpciones'>
+				    <div class="modal-dialog modal-md">
+				      	<div class="modal-content">
+				        	
+				        	<div class="modal-header" style="background-color: @{{ opcion == 0 ? '#5cb85c' : opcion == 1 ? '#337ab7' : '#c9302c'}};text-align: center;color: white;">
+				          		<button type="button" class="close" ng-click="closeModal()">&times;</button>
+				          		<h4 class="modal-title" >
+				          			@{{ opcion === 0 ? 'Agregar' : opcion === 1 ? 'Editar' : 'Eliminar' }} usuario</h4>
+				        	</div>
+				        	
+				        	<div class="modal-body" style="height: @{{ opcion === 2 ? '100px' : 'auto' }}">
+				        		
+				        		<h4 style="display:@{{ opcion === 2 ? 'block' : 'none' }}; margin-top: 20px;text-align: center;">¿Desea eliminar el usuario @{{ selected.username }}?</h4>
 								
-								<div class="form-group row">
-								    <label  class="col-sm-4 col-form-label" for="username">Usuario:</label>
-								    <div class="col-sm-6">
-								        <input type="text" class="form-control" id="username" placeholder="Ingrese el nombre de usuario" ng-model="update.username" required />
-								    </div>
+								<div style="display:@{{ opcion !== 2 ? 'block' : 'none' }}; margin-top: 20px;">	
+									
+									<div class="form-group row">
+									    
+									    <label  class="col-sm-4 col-form-label" for="username">Usuario:</label>
+									    
+									    <div class="col-sm-6">
+									        
+									        <input type="text" class="form-control" name="username" placeholder="Ingrese el nombre de usuario" ng-model="update.username" usuario required validar-usuario/>
+
+											<span  ng-show="modalUsuarios.username.$error.required && modalUsuarios.username.$touched" class="help-block" style="color: #E00808;"><strong>Este campo es requerido</strong></span>
+
+											<span  ng-show="!modalUsuarios.username.$error.required && modalUsuarios.username.$error.usuario && modalUsuarios.username.$touched" class="help-block" style="color: #E00808;"><strong>Nombre de usuario incorrecto</strong></span>
+
+											<span  ng-show="modalUsuarios.username.$error.validarUsuario" class="help-block" style="color: #E00808;"><strong>Ese usuario ya existe</strong></span>
+											
+									    </div>
+
+									</div>
+
+					        		<div class="form-group row" style="display:@{{ opcion == 0 ? 'block' : 'none' }};">
+									    
+									    <label class="col-sm-4 col-form-label" for="password">Contraseña:</label>
+									    
+									    <div class="col-sm-6">
+									        
+									        <input type="text" class="form-control" name="password" placeholder="Ingrese la contrasseña" ng-model="update.password" contrasena required />
+
+									        <span  ng-show="modalUsuarios.password.$error.required && modalUsuarios.password.$touched" class="help-block" style="color: #E00808;"><strong>Este campo es requerido</strong>
+											</span>
+
+											<span  ng-show="!modalUsuarios.password.$error.required && modalUsuarios.password.$error.contrasena && modalUsuarios.password.$touched" class="help-block" style="color: #E00808;"><strong>Contraseña incorrecta</strong>
+											</span>
+
+									    </div>
+
+									</div>
+
+					        		<div class="form-group row">
+
+									    <label class="col-sm-4 col-form-label" for="email">Correo electrónico:</label>
+									    
+									    <div class="col-sm-6">
+
+									        <input type="text" class="form-control" name="email" placeholder="Ingrese el correo electrónico" ng-model="update.email" correo required />
+
+									        <span ng-show="modalUsuarios.email.$error.required && modalUsuarios.email.$touched" class="help-block" style="color: #E00808;"><strong>Este campo es requerido</strong>
+											</span>
+
+											<span ng-show="!modalUsuarios.email.$error.required && modalUsuarios.email.$error.correo && modalUsuarios.email.$touched" class="help-block" style="color: #E00808;"><strong>Correo incorrecto</strong>
+											</span>
+
+									    </div>
+
+									</div>
+
 								</div>
 
-				        		<div class="form-group row" style="display:@{{ opcion == 0 ? 'block' : 'none' }};">
-								    <label class="col-sm-4 col-form-label" for="password">Contraseña:</label>
-								    <div class="col-sm-6">
-								        <input type="text" class="form-control" id="password" placeholder="Ingrese el correo contrasseña" ng-model="update.password" required />
-								    </div>
-								</div>
+				        	</div>
 
-				        		<div class="form-group row">
-								    <label class="col-sm-4 col-form-label" for="email">Correo electrónico:</label>
-								    <div class="col-sm-6">
-								        <input type="text" class="form-control" id="email" placeholder="Ingrese el correo electrónico" ng-model="update.email" required />
-								    </div>
-								</div>
+				        	<div class="modal-footer">
+				          		<button type="button" class="btn-outline btn-default" ng-click="closeModal()" style="height: 30px;border-radius: 5px;" ng-blur="modalUsuarios.$setUntouched();">Cancelar</button>
+				        		
+				          		<button type="button" ng-disabled="modalUsuarios.$invalid" class="btn-outline btn-@{{ opcion == 0 ? 'show' : opcion == 1 ? 'edit' : 'delete'}}" 
+				        			ng-click="opcion === 0 ? add() : opcion === 1 ? edit() : delete()" style="height: 30px;border-radius: 5px;" ng-blur="modalUsuarios.$setUntouched();">
+				        			@{{ opcion === 0 ? 'Agregar' : opcion === 1 ? 'Guardar cambios' : 'Aceptar' }}
+				        		</button>
 
-							</div>
-
-			        	</div>
-
-			        	<div class="modal-footer">
-			          		<button type="button" class="btn-outline btn-default" ng-click="closeModal()" style="height: 30px;border-radius: 5px;">Cancelar</button>
-			        		<button type="button" class="btn-outline btn-@{{ opcion == 0 ? 'show' : opcion == 1 ? 'edit' : 'delete'}}" 
-			        			ng-click="opcion === 0 ? add() : opcion === 1 ? edit() : delete()" style="height: 30px;border-radius: 5px;">
-			        			@{{ opcion === 0 ? 'Agregar' : opcion === 1 ? 'Guardar cambios' : 'Aceptar' }}
-			        		</button>
-			        	</div>
-			      	</div>
-			    </div>
-			</div>
+				        	</div>
+				      	</div>
+				    </div>
+				</div>
+			</form>
 
 		</section>
 	</ng-controller>

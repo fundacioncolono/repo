@@ -20,6 +20,7 @@
     <script src="{{ asset('app/services.js') }}"></script>
     <script src="{{ asset('app/factory.js') }}"></script>
     <script src="{{ asset('app/directives.js') }}"></script>
+    <script src="{{ asset('app/validation.js') }}"></script>
     @stack('scripts_top')
     
     <title>{{ config('app.name') }}</title>

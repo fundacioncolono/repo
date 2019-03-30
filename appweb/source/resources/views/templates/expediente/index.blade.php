@@ -1,9 +1,9 @@
 @extends('layouts.main')
 
 @push('scripts_top')
-	<script src="{{ asset('app/controllers/ayudas/EditController.js') }}"></script>
 	<script src="{{ asset('app/controllers/expedientes/MainController.js') }}"></script>
 	<script src="{{ asset('app/controllers/expedientes/IndexController.js') }}"></script>
+	<script src="{{ asset('app/controllers/ayudas/EditController.js') }}"></script>
 	<script src="{{ asset('app/controllers/expedientes/OverviewController.js') }}"></script>
 	<script src="{{ asset('app/controllers/expedientes/EditController.js') }}"></script>
 	<script src="{{ asset('app/controllers/personas/EditController.js') }}"></script>

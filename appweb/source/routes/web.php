@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('personas','PersonasController');
 
     Route::get('usuarios/verUsuarios','UsuariosController@verUsuarios')->name('verUsuarios');
+    Route::get('usuarios/{username}/comprobar','UsuariosController@comprobar');
     Route::resource('usuarios','UsuariosController');
 
     Route::resource('referentes','ReferentesController');
@@ -41,4 +42,5 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('inspectores', 'InspectoresController');
         
     Route::get('transacciones/all','HomeController@all');    
+
 });

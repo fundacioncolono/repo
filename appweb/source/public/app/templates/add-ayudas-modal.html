@@ -1,46 +1,60 @@
-<div class="modal-content">
-    <div class="modal-header">
-        <button type="button" class="close" title="Cerrar" data-dismiss="modal" aria-label="Cerrar">
-            <span aria-hidden="true">×</span>
-        </button>
-        <h4 class="modal-title">Agregar ayudas</h4>
-    </div>
+ <form name="ayudaForm" autocomplete="off" novalidate>
 
-    <div class="modal-body row">
-        <p class="text-danger text-center ng-hide" ng-hide="items.length > 0">
-            <span class="glyphicon glyphicon-asterisk"></span>
-            <strong>No hay mas ayudas para agregar</strong>
-        </p>
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" title="Cerrar" data-dismiss="modal" aria-label="Cerrar">
+                <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title">Agregar ayudas</h4>
+        </div>
 
-        <div class="form-horizontal col-md-10 col-md-offset-1" ng-show="items.length > 0">
-            <div class="form-group">
-                <label class="control-label col-md-4">Ayuda solicitada:</label>
-                <div class="col-md-6 col-md-offset-1">
-                    <select class="form-control" ng-model="selected" ng-options="i as i.{{label}} for i in items track by i.{{value}}" ng-transclude>
-                        <option value="" disabled selected>-Seleccionar ayuda-</option>
-                    </select>
+        <div class="modal-body row">
+            <p class="text-danger text-center ng-hide" ng-hide="items.length > 0">
+                <span class="glyphicon glyphicon-asterisk"></span>
+                <strong>No hay mas ayudas para agregar</strong>
+            </p>
+
+            <div class="form-horizontal col-md-10 col-md-offset-1" ng-show="items.length > 0">
+                <div class="form-group">
+                    <label class="control-label col-md-4">Ayuda solicitada:</label>
+                    <div class="col-md-6 col-md-offset-1">
+                        <select class="form-control" name="ayudaSolicitada" ng-model="selected" ng-options="i as i.{{label}} for i in items track by i.{{value}}" ng-transclude required>
+                            <option value="" disabled selected>-Seleccionar ayuda-</option>
+                        </select>
+
+                        <span  ng-show="ayudaForm.ayudaSolicitada.$error.required && ayudaForm.ayudaSolicitada.$touched" class="help-block" style="color: #E00808;"><strong>Este campo es requerido</strong></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-4">Monto base ₡:</label>
+                    <div class="col-md-6 col-md-offset-1">
+                        <input class="form-control" name="monto" ng-model="monto" placeholder="(en colones)" value="0" type="text" ng-transclude required numeros>
+                        
+                        <span  ng-show="ayudaForm.monto.$error.required && ayudaForm.monto.$touched" class="help-block" style="color: #E00808;"><strong>Este campo es requerido</strong></span>
+
+                        <span  ng-show="!ayudaForm.monto.$error.required && ayudaForm.monto.$error.numeros && ayudaForm.monto.$touched" class="help-block" style="color: #E00808;"><strong>Solo se permiten numeros</strong></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3">Detalle:</label>
+                    <div class="col-md-11">
+                        <textarea cols="50" rows="5" class="form-control noresize" name="detalle" ng-model="detalle" ng-transclude required letras-numeros></textarea>
+
+                        <span  ng-show="ayudaForm.detalle.$error.required && ayudaForm.detalle.$touched" class="help-block" style="color: #E00808;"><strong>Este campo es requerido</strong></span>
+
+                        <span  ng-show="!ayudaForm.detalle.$error.required && ayudaForm.detalle.$error.letrasNumeros && ayudaForm.detalle.$touched" class="help-block" style="color: #E00808;"><strong>Slo letras, números y signos (puntos, comas y espacios)</strong></span>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="form-group">
-                <label class="control-label col-md-4">Monto base ₡:</label>
-                <div class="col-md-6 col-md-offset-1">
-                    <input class="form-control" ng-model="monto" placeholder="(en colones)" value="0" type="text" ng-transclude>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-3">Detalle:</label>
-                <div class="col-md-11">
-                    <textarea cols="50" rows="5" class="form-control noresize" ng-model="detalle" ng-transclude></textarea>
-                </div>
+        <div class="modal-footer">
+            <div class="text-center">
+                <button type="button" class="btn-primary btn" ng-click="add()" ng-disabled="ayudaForm.$invalid" ng-show="items.length > 0" ng-blur="ayudaForm.$setUntouched()">Agregar</button>
             </div>
         </div>
     </div>
 
-    <div class="modal-footer">
-        <div class="text-center">
-            <button type="button" class="btn-primary btn" ng-click="add()" ng-disabled="!selected" ng-show="items.length > 0">Agregar</button>
-        </div>
-    </div>
-</div>
+</form>

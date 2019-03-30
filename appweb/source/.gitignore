@@ -1,6 +1,5 @@
 /node_modules
 /public/hot
-/public/storage
 /storage/*.key
 /vendor
 /.idea
@@ -8,16 +7,8 @@
 /tests/
 /storage/
 
-Homestead.json
 Homestead.yaml
-composer.json
-composer.lock
 yarn.lock
-artisan
-webpack.mix.js
-server.php
-package.json
-phpunit.xml
 npm-debug.log
 yarn-error.log
 .env

@@ -25,7 +25,7 @@
                         <button class="btn-outline btn btn-show" type="submit">
                             <span class="glyphicon glyphicon-ok"></span> Filtrar
                         </button>
-                        <button class="btn-outline btn btn-none" type="button" ng-click="filter_data.active = false; filter_data.filter = filter_data.filtered ? filter_data.filter : null" data-toggle="collapse" data-target="#filter">Cancelar</button>
+                        <button class="btn-outline btn btn-none" type="button" ng-click="filter_desactivado()" data-toggle="collapse" data-target="#filter">Cancelar</button>
                     </ngShow>
                 </div>
             </div>

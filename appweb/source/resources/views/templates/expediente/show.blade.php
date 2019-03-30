@@ -8,15 +8,18 @@
         <hr>
     </header>
 
-    <section class="expediente-info form-horizontal" style="overflow-y: auto" ng-if="selected.editable">
-        <div class="controls" ng-show="selected.editable">
-            <button type="button" class="btn btn-outline btn-show" ng-click="commit()">
-                <span class="glyphicon glyphicon-ok"></span> Aceptar cambios</button>
-            <button type="button" class="close" title="Cancelar edición" ng-click="selected.editable = false">&times;</button>
-        </div>
 
-        {{-- INCLUDE EXPEDIENTE FORM COMPONENT --}}
-        @include('templates.expediente.$edit')
+    <section class="expediente-info form-horizontal" style="overflow-y: auto" ng-if="selected.editable">
+        <form name="account" class="form-horizontal" autocomplete="off">
+            <div class="controls" ng-show="selected.editable">
+                <button type="button" class="btn btn-outline btn-show" ng-click="commit()" ng-disabled="account.$invalid">
+                    <span class="glyphicon glyphicon-ok"></span> Aceptar cambios</button>
+                <button type="button" class="close" title="Cancelar edición" ng-click="selected.editable = false">&times;</button>
+            </div>
+
+            {{-- INCLUDE EXPEDIENTE FORM COMPONENT --}}
+            @include('templates.expediente.$edit')
+        </form>
     </section>
 
     <section class="expediente-info" ng-class="{'cached': update.cache, 'archived': selected.archivado}" ng-hide="selected.editable">

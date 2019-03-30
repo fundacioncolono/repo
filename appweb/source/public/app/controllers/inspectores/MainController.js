@@ -7,7 +7,7 @@ app.controller('Inspectores_MainController', function ($scope, Region) {
 	};
 
 	$scope.activos = [
-        { id: 1, name: 'Si' },
         { id: 0, name: 'No' },
+        { id: 1, name: 'Si' },
     ];
 });

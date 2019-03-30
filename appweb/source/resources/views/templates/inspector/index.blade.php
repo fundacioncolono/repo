@@ -13,18 +13,22 @@
 
 @section('content')
 	<ng-controller ng-controller="Inspectores_MainController">
-		<section id="inspectores" class="col-md-10 col-md-offset-1" ng-controller="Inspectores_IndexController">
+		<section id="inspectores" class="col-md-12" style="padding-top: 2em" ng-controller="Inspectores_IndexController"> 
 	
 			@include('templates.inspector.$overview')
 			
-			@include('partials._search-inspector')
-	
+
+			<div class="controls col-lg-12">
+				@include('partials._search-inspector')
+			</div>
+
+			<!-- FILTRO DE BUSQUEDA -->
+			<div class="collapse col-md-4 col-md-offset-4" id="filter">
+				@include('partials._filter-inspector')
+			</div>
+
 			<!-- COLUMNAS VISIBLES -->
-			<nav class="navbar navbar-default" style="margin-top: 1em; margin-left: 10px;width: 1100px;" role="navigation">
-				<span class="navbar-text">
-					<b>Columnas visibles</b>
-				</span>
-	
+			<nav class="navbar navbar-default navbar-sm col-md-4 col-md-offset-4" style="margin-top: .5em" role="navigation">
 				<div class="navbar-form" style="padding-top:4px">
 					<label class="checkbox-inline"><input type="checkbox" ng-model="columns.cedula">Cédula</label>
 					<label class="checkbox-inline"><input type="checkbox" ng-model="columns.nombre">Nombre</label>
@@ -33,16 +37,7 @@
 					<label class="checkbox-inline"><input type="checkbox" ng-model="columns.activo">Activo</label>
 				</div>
 			</nav>
-	
-			<div class="collapse col-md-12" id="filter" style="background-color: #fafafa;">
-				@include('partials._filter-inspector')
-			</div>
-			</nav>
-	
-			<div class="collapse col-md-12" id="filter" style="background-color: #fafafa;">
-				@include('partials._filter-inspector')
-			</div>
-	
+
 			<!-- TABLA DE inspectores -->
 			<div class="table-responsive col-md-12">
 				<table id="inspectoresindex" class="table table-hover table-striped">

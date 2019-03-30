@@ -8,14 +8,19 @@
     </header>
 
     <section class="expediente-info form-horizontal" ng-if="selected.persona.editable">
-        <div class="controls">
-            <button type="button" class="btn-outline btn btn-show" ng-click="updatePersona()">
-                <span class="glyphicon glyphicon-ok"></span> Aceptar cambios</button>
-            <button type="button" class="close" title="Cancelar edición" ng-click="selected.persona.editable = false">&times;</button>
-        </div>
+        <form name="account" class="form-horizontal" autocomplete="off">
+        
+            <div class="controls">
+                <button type="button" class="btn-outline btn btn-show" ng-click="updatePersona()" ng-disabled="account.$invalid">
+                    <span class="glyphicon glyphicon-ok"></span> Aceptar cambios</button>
+                <button type="button" class="close" title="Cancelar edición" ng-click="selected.persona.editable = false">&times;</button>
+            </div>
 
-        {{-- INCLUDE PERSONA FORM COMPONENT --}}
-        @include('templates.persona.$edit')
+            {{-- INCLUDE PERSONA FORM COMPONENT --}}
+            @include('templates.persona.$edit')
+        
+        </form>
+
     </section>
 
     <section class="expediente-info" ng-hide="selected.persona.editable">
