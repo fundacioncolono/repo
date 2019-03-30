@@ -2,5 +2,22 @@
     "name": "FundacionColonoApp",
     "version": "1.0.0",
     "private": true,
-    "dependencies": {}
+    "dependencies": {
+        "cordova-android": "^6.2.1",
+        "cordova-browser": "^6.0.0",
+        "cordova-ios": "4.2.0",
+        "cordova-plugin-whitelist": "~",
+        "cordova-windows": "4.4.2"
+    },
+    "cordova": {
+        "platforms": [
+            "ios",
+            "windows",
+            "browser",
+            "android"
+        ],
+        "plugins": {
+            "cordova-plugin-whitelist": {}
+        }
+    }
 }
