@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    $direccionServicios = 'http://localhost:5001/fundacioncolono/src/public/api/';
+    $direccionServicios = 'http://192.168.1.57:8000/api/';
     $direccionServidor = 'http://localhost:4400/';
 
     if (window.localStorage.length == 4) {
@@ -41,7 +41,7 @@ function irLogin() {
 }
 
 function irInicio() {
-    redireccionar('Inicio.html#pageInicio');
+    redireccionar('inicio.html#pageInicio');
 }
 
 function irCasos() {
@@ -91,7 +91,7 @@ function redireccionar(ruta) {
 
     //$('#redireccionar').attr('href', ruta);
     //$('#redireccionar').click();
-    window.location.href = $direccionServidor + ruta;
+    window.location.href = ruta;
 
 }
 
